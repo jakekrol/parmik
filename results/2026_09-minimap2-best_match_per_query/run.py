@@ -22,6 +22,13 @@ args.xmax = float(args.xmax)
 def main():
     df = pd.read_csv(args.input,sep="\t")
     x = df['Best_Match_Length'].values
+    n = len(x)
+    median = np.median(x)
+    print("# queries:", n)
+    print("# median length:", median)
+    num_zero = np.sum(x==0)
+    perc_zero = num_zero/n*100
+    print("# zero length:", perc_zero,"%")
     assert np.all(x >= 0)
     assert np.all(x < 151)
     fig, ax = plt.subplots(figsize=(6,4))
