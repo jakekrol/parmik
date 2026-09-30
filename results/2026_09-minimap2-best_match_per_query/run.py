@@ -12,6 +12,8 @@ parser.add_argument("--title", default="Minimap2 NC045512-SRR12432009")
 parser.add_argument("--bins",default = 30)
 parser.add_argument("--xmin",default=0)
 parser.add_argument("--xmax",default=150)
+parser.add_argument("--xlabel", default="Match length")
+parser.add_argument("--ylabel", default="Count")
 args = parser.parse_args()
 args.bins = int(args.bins)
 args.xmin = float(args.xmin)
@@ -29,6 +31,8 @@ def main():
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.set_xlim(args.xmin, args.xmax)
+    ax.set_xlabel(args.xlabel)
+    ax.set_ylabel(args.ylabel)
     fig.savefig(args.output)
 
 if __name__ == "__main__":
